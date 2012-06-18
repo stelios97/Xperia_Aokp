@@ -30,10 +30,10 @@ BOARD_USES_ECLAIR_LIBCAMERA := true
 BOARD_CAMERA_LIBRARIES := camera.msm7x27.so libcameraservice libcamera libcamera_client.so liboemcamera.so
 
 # inherit from the proprietary version
--include vendor/semc/shakira/BoardConfigVendor.mk
+-include vendor/semc/mimmi/BoardConfigVendor.mk
 
 # Inclide headers
-TARGET_SPECIFIC_HEADER_PATH := device/semc/shakira/include
+TARGET_SPECIFIC_HEADER_PATH := device/semc/mimmi/include
 
 # Platform
 TARGET_BOARD_PLATFORM := msm7x27
@@ -45,7 +45,7 @@ ARCH_ARM_HAVE_VFP := true
 
 # Info
 TARGET_BOOTLOADER_BOARD_NAME := delta
-TARGET_OTA_ASSERT_DEVICE := E15i,E15a,shakira
+TARGET_OTA_ASSERT_DEVICE := U20i,U20a,mimmi
 PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BOOTLOADER_BOARD_NAME=delta
 
 # Kernel
@@ -71,7 +71,7 @@ WIFI_EXT_MODULE_NAME := sdio
 PRODUCT_DEFAULT_WIFI_CHANNELS := 14
 
 # EGL
-BOARD_EGL_CFG := device/semc/shakira/prebuilt/egl.cfg
+BOARD_EGL_CFG := device/semc/mimmi/prebuilt/egl.cfg
 
 # libaudio
 BOARD_USES_GENERIC_AUDIO := false
@@ -89,14 +89,14 @@ ALLOW_DEQUEUE_CURRENT_BUFFER := true
 BOARD_AVOID_DRAW_TEXTURE_EXTENSION := true
 BOARD_NO_RGBX_8888 := true
 BOARD_USE_SKIA_LCDTEXT := true
+BOARD_HAS_JANKY_BACKBUFFER := true
+BOARD_HAS_CRAPPY_BACKBUFFER := true
 TARGET_FORCE_CPU_UPLOAD := true
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 TARGET_GRALLOC_USES_ASHMEM := true
 USE_OPENGL_RENDERER := true
 TARGET_USES_GENLOCK := true
-
-# Fix Refrashrate
-COMMON_GLOBAL_CFLAGS += -DREFRESH_RATE=49 -DQCOM_HARDWARE
+COMMON_GLOBAL_CFLAGS += -DREFRESH_RATE=60 -DQCOM_HARDWARE
 
 # GPS
 BOARD_USES_QCOM_HARDWARE := true
@@ -113,11 +113,11 @@ TARGET_USES_OLD_LIBSENSORS_HAL:=true
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 # Recovery
-BOARD_CUSTOM_BOOTIMG_MK := device/semc/shakira/custombootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/semc/mimmi/custombootimg.mk
 TARGET_RECOVERY_PRE_COMMAND := "mkdir /cache/recovery;touch /cache/recovery/boot;sync;"
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_USES_RECOVERY_CHARGEMODE := false
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/semc/shakira/recovery/recovery_keys.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/semc/mimmi/recovery/recovery_keys.c
 BOARD_HAS_BOOT_RECOVERY := true
 BOARD_HAS_SMALL_RECOVERY := true
 BOARD_LDPI_RECOVERY := true
@@ -131,6 +131,6 @@ BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
 
 # A custom ota package maker for a device without a boot partition
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/semc/shakira/releasetools/semc_ota_from_target_files
-TARGET_PREBUILT_KERNEL := device/semc/shakira/prebuilt/kernel
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/semc/mimmi/releasetools/semc_ota_from_target_files
+TARGET_PREBUILT_KERNEL := device/semc/mimmi/prebuilt/kernel
 
